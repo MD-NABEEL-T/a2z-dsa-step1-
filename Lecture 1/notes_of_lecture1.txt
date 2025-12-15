@@ -1,4 +1,0 @@
-1,user input and output done 
-2,Data types
-3,If else 
-4,switch 

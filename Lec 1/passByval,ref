@@ -1,0 +1,5 @@
+| Type                                             | What Function Gets                        | Does original change? |
+| ------------------------------------------------ | ----------------------------------------- | --------------------- |
+| **Primitive (int, char, etc.)**                  | Copy of value                             | ❌ No                  |
+| **Objects (Array, StringBuilder, custom class)** | Copy of reference (points to same object) | ✔ Yes                 |
+in simple “Java is always pass-by-value, but for objects the value is a reference.”

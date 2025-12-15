@@ -1,0 +1,9 @@
+1,user input and output done 
+2,Data types
+3,If else 
+4,switch 
+5,arrays,strings
+6,for loops
+7,while loops
+8,pass by value and reference
+9,time and space complexity
