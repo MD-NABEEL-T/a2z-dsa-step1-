@@ -1,0 +1,10 @@
+public class {
+    public static void main(String []args){
+        for(int i,){
+            for(int j,){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
