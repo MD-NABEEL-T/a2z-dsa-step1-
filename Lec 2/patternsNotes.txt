@@ -8,7 +8,7 @@ public class {
         }
     }
 }
-ALWAYS use for(i=1;i<=n) for looping variable for better understanding ok;
+ALWAYS use for(i=1;i<=n) for looping variable for better understanding in some problems dont rely only on i=0 ok;
 BASED ON EXPERIENCE
 
 Ask only ONE question: To spot a pattern 
