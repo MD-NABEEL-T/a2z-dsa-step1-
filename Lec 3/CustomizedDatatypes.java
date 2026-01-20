@@ -1,4 +1,4 @@
-// In companies do like this 
+// In companies do like this ENCAPSULATION. 
 class Data{
     private Integer num;
     private String name;
