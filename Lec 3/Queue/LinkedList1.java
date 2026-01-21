@@ -1,0 +1,1 @@
+// same as LinkedList in collection interface.

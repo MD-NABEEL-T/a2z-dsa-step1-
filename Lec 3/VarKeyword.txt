@@ -1,0 +1,9 @@
+Using var (Java 10+):
+java
+var message = "Hello, World!"; // message is inferred as String
+var number = 10;               // number is inferred as int
+var list = new ArrayList<String>(); // list is inferred as ArrayList<String>
+Once the type is inferred at compile time, it cannot be changed later. 
+Key Characteristics and Limitations
+Local Variables Only: var can only be used for local variables inside methods, in for loops, and in try-with-resources statements. It cannot be used for fields (instance or static variables), method parameters, or return types.
+Must Have an Initializer: A variable declared with var must be initialized immediately in the declaration statement, so the compiler has a value to infer the type from.

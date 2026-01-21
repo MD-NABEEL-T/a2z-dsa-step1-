@@ -1,0 +1,9 @@
+1️⃣ To store UNIQUE data
+This is the main reason.
+
+A Set never allows duplicates.
+2️⃣ Fast lookup (searching)
+Sets are much faster than Lists when checking existence.
+
+4️⃣ Automatic sorting (TreeSet)
+If you want unique + sorted data:
