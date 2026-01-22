@@ -1,0 +1,5 @@
+🔹 Why main is static? 🤯
+public static void main(String[] args)
+
+👉 JVM starts program without creating object
+👉 So main must be static
