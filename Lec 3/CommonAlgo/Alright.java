@@ -15,5 +15,11 @@ public class Alright {
         
         Collections.sort(al);
         System.out.println(al);
+
+        al.add(3);
+        System.out.println(al);
+        System.out.println(Collections.frequency(al,3));
+
+        // Math.pow(0, 0);
     }
 }
