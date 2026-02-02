@@ -9,8 +9,16 @@ public class Recursion3 {
             f(i,n);
         }
     }
+    public static void fu(int i,int n){
+        if(i>n){
+            return;
+        }
+        System.err.println(i);
+        i++;
+        fu(i,n);
+    }
     public static void main(String[] args) {
         int n=7;
-        f(n,n);
+        fu(1,n);
     }
 }
