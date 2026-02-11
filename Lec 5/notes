@@ -2,3 +2,14 @@ Stack overflow is the infinite recursion.
 
 ❌ Avoid in recursion
 f(i--, n);   // confusing + dangerous
+
+⚠ What If Method Was void?
+
+If the method was:
+public static void PalindromeName(...)
+
+Then yes — you wouldn’t need return.
+But since it returns boolean, you must return something.
+
+Final Clear Rule
+If method return type
