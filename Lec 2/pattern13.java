@@ -10,4 +10,17 @@ public class pattern13{
             System.out.println();
         }
     }
+
+
+    static void demo(String[] args) {
+        int count=1;
+        int n=4;
+        for(int i=0;i<=4;i++){
+            for(int j=0;j<=i;j++){
+                //count++ prints and then increases the value so it is right
+                System.out.print(count++ + " ");
+            }
+            System.out.println();
+        }
+    }
 }

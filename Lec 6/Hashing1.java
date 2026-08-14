@@ -9,6 +9,6 @@ public class Hashing1{
         for(int i=0;i<n;i++){
             arr[i]=sc.nextInt();
         }
-        int   
+        
     }
 }

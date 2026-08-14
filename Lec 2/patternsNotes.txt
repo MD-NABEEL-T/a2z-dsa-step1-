@@ -1,3 +1,7 @@
+Take a pen and paper and you will figure out the relation of this patterns very quickly
+ALWAYS use for(i=1;i<=n) for looping variable for better understanding in some problems dont rely only on i=0 ok;
+BASED ON EXPERIENCE
+
 public class {
     public static void main(String []args){
         for(int i,){
@@ -8,8 +12,6 @@ public class {
         }
     }
 }
-ALWAYS use for(i=1;i<=n) for looping variable for better understanding in some problems dont rely only on i=0 ok;
-BASED ON EXPERIENCE
 
 Ask only ONE question: To spot a pattern 
 

@@ -1,3 +1,9 @@
+// pattern noticed = 2*n-2*i;
+// 1 6 1
+// 2 4 2
+// 3 2 3
+// 4 0 4
+
 public class pattern12{
     public static void main(String []args){
         int n=5;

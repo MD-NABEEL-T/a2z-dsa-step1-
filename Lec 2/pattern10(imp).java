@@ -1,4 +1,4 @@
-public class pattern10{
+public class pattern10(imp){
     public static void main(String []args){
         int n=5;
         int stars;
@@ -9,6 +9,26 @@ public class pattern10{
             
             for(int j=1;j<=stars;j++){
                 System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+
+ class demo {
+    public static void main(String[] args) {
+        int n=4;
+        // int m=n;
+        for(int i=1;i<=2*n;i++){
+            if(i<=n){
+                for(int j=1;j<=i;j++){
+                    System.out.print("*");
+                }
+            }
+            else if(i>n){
+                for(int j=1;j<=2*n-i;j++){
+                    System.out.print("*");
+                }
             }
             System.out.println();
         }
