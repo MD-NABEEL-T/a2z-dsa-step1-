@@ -11,7 +11,7 @@ public class pattern22{
                     System.out.print(3+" ");
                 }
                 else if(i==3||i==(2*n-2-1)||j==3||j==(2*n-2-1)){
-                    System.out.print(2+" ");
+                    System.out .print(2+" ");
                 }
                 else{
                     System.out.print(1+" ");
@@ -19,5 +19,5 @@ public class pattern22{
             }
             System.out.println();
         }
-    }
+    }                    
 }
