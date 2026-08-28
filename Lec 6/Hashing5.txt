@@ -1,0 +1,23 @@
+How a hash function maps a number to an index internally
+
+key = 12 → 12 % 10 = 2 → store at index 2
+key = 25 → 25 % 10 = 5 → store at index 5
+key = 139 → 139 % 10 = 9 → store at index 9
+
+indexes :0 1 2 3 4 5 6 7 8 9
+
+suppose hash function is:
+index = number % 
+
+we have :{2, 5, 16, 28, 139, 38, 48, 28, 18}
+
+Now :
+2   % 10 = 2
+5   % 10 = 5
+16  % 10 = 6
+28  % 10 = 8
+139 % 10 = 9
+38  % 10 = 8  ← collision
+48  % 10 = 8  ← collision
+
+collision - When two or more values get mapped to the same index
