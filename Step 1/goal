@@ -1,0 +1,215 @@
+Goal of the repo:
+For easy reference and understanding i am solving the problems here from the a2z dsa sheet 
+
+ROADMAP :
+Step 1 → Learn Basics — 5 days
+
+Day 1–2: I/O, loops, conditions
+
+Day 3: Functions, arrays intro
+
+Day 4: Time/space complexity
+
+Day 5: Solve 8–10 easy problems
+
+Step 2 → Logical Thinking — 3 days
+
+Day 6–7: Pattern problems
+
+Day 8: Basic logic questions
+
+Step 3 → STL / Collections — 3 days
+
+Day 9: Arrays, ArrayList / vector
+
+Day 10: Maps, sets
+
+Day 11: 3–4 practice problems
+
+Step 4 → Sorting & Searching Basics — 7 days
+
+Day 12–13: Bubble, Selection, Insertion
+
+Day 14: Binary Search intro
+
+Day 15–16: Classic problems
+
+Day 17–18: Sorting + searching mixed problems
+
+Step 5 → Basic Maths — 5 days
+
+Day 19: Prime, factors
+
+Day 20: GCD, LCM
+
+Day 21: Digit DP basics
+
+Day 22–23: Solve 5–8 problems
+
+Month 1 total: 23 days
+(End of month = light review + 1 rest day)
+
+✅ MONTH 2 — Core Concepts (Weeks 5–8)
+Step 6 → Bit Manipulation — 6 days
+
+Day 24–25: Bit basics
+
+Day 26: Set bits, parity
+
+Day 27–29: XOR patterns + problems
+
+Step 7 → Recursion — 7 days
+
+Day 30–31: Recursion fundamentals
+
+Day 32–33: Subsets
+
+Day 34–35: Permutations
+
+Day 36: Medium recursion problems
+
+Step 8 → Arrays — 10 days
+
+Day 37–40: Basic array problems
+
+Day 41–43: Kadane’s, prefix sums
+
+Day 44–46: Medium array problems
+
+Month 2 total: 23 days
+(End of month = 1 revision + 1 rest day)
+
+✅ MONTH 3 — High-frequency Interviews (Weeks 9–12)
+Step 9 → Binary Search on Answer — 7 days
+
+Day 47–49: Binary search patterns
+
+Day 50–52: BS on answer problems
+
+Day 53: Revision
+
+Step 10 → Strings — 7 days
+
+Day 54–55: Basic string manipulation
+
+Day 56–57: Hashing + frequency
+
+Day 58–60: Medium string problems
+
+Step 11 → Linked List — 10 days
+
+Day 61–63: Basics + reverse
+
+Day 64–66: Fast–slow pointer problems
+
+Day 67–69: Medium LL + add numbers
+
+Month 3 total: 24 days
+
+✅ MONTH 4 — Intermediate DS (Weeks 13–16)
+Step 12 → Stack + Queue — 7 days
+
+Day 70–71: Basic stack/queue
+
+Day 72–73: Next greater element
+
+Day 74–76: Monotonic stack problems
+
+Step 13 → Sliding Window / Two Pointer — 7 days
+
+Day 77–78: Intro patterns
+
+Day 79–81: Easy-medium SW problems
+
+Day 82–83: Hard SW problems
+
+Step 14 → Binary Trees — 10 days
+
+Day 84–86: Traversals
+
+Day 87–88: Height, diameter
+
+Day 89–92: Medium-hard tree problems
+
+Step 15 → BST — 7 days
+
+Day 93–94: Basics
+
+Day 95–96: Validate BST, LCA
+
+Day 97–99: Medium BST problems
+
+Month 4 total: 31 days (a little packed)
+
+✅ MONTH 5 — Heavy Topics (Weeks 17–20)
+Step 16 → Heaps — 6 days
+
+Day 100–101: Intro PQ
+
+Day 102–104: K-sum, K-largest, K-smallest
+
+Day 105: Merge K lists
+
+Step 17 → Graphs — 14 days
+
+Day 106–108: BFS, DFS
+
+Day 109–110: Cycle detection
+
+Day 111–113: Toposort, DAG
+
+Day 114–116: Dijkstra, Bellman-Ford
+
+Day 117–119: Medium-hard problems
+
+Step 18 → Dynamic Programming — 14 days
+
+Day 120–121: Intro DP (fib, climb stairs)
+
+Day 122–124: 0/1 knapsack + subset sum
+
+Day 125–127: DP on grids
+
+Day 128–130: LIS, LCS
+
+Day 131–133: Medium-hard DP
+
+Month 5 total: 28 days
+
+✅ MONTH 6 — Mastery Month (Weeks 21–24)
+
+This month is for improvement, mocks, and confidence-building.
+
+Revision + Weak topics — 10 days
+
+Day 134–143: Revisit LL, trees, DP, graphs
+
+Full mock weeks — 10 days
+
+Day 144–153:
+
+3 coding rounds per week
+
+Explain solutions out loud
+
+Re-code without looking
+
+Company sheets (optional) — 7 days
+
+Day 154–160:
+
+Amazon / Google / Microsoft tagged problems
+
+1 timed contest per week
+
+Final polishing — 7 days
+
+Day 161–167:
+
+20–25 important problems redo
+
+Prepare resume + portfolio
+
+Confidence building
+
+🎯 Day 168–180: Buffer + rest + final practice

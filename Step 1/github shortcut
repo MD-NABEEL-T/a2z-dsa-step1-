@@ -1,0 +1,17 @@
+Idea:
+Run three commands by writing 
+git save 
+
+if you want to write commit message 
+git acp
+
+Logic in git:
+$ cat ~/.gitconfig
+[user]
+        name = MD-NABEEL-T
+        email = tmdnabeel4656.tmn@gmail.com
+[core]
+        autocrlf = false
+[alias]
+        acp = !sh -c \"git add . && git commit -m \\\"$1\\\" && git push\" -
+        save = !git add . && git commit -m \"auto\" && git push

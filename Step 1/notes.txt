@@ -1,0 +1,16 @@
+beqaraar song:https://youtube.com/shorts/PPlKK5YDUyU?si=oNWPWKbGuhKrRRTX
+
+alright .
+whenever there is a division happening the TIME COMPLEXITY is O(logN)
+Leetcode Problems that can be solved :2427,1492.
+🔹 Why main is static? 🤯
+public static void main(String[] args)
+
+👉 JVM starts program without creating object
+👉 So main must be static
+
+How to count digits (simple)
+int digits = String.valueOf(x).length();
+
+10^8 =1s
+10^10=100s
