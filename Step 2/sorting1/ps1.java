@@ -1,4 +1,4 @@
-// SELECTION SORT
+// SELECTION SORT - select minimum and swap it and move to next index
 import java.util.*;
 public class ps1{
 //     public static void notgood(int arr ,int n){
