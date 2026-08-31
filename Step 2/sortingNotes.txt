@@ -1,0 +1,13 @@
+int arr[]={23,6,32,45,4,12};
+
+SELECTION SORT
+    -FIND MIN AND PLACE IT TO LEFT 
+    - finds the smallest,swap and move to the next index 
+    eg: compare 23 with everyone and since 4 is smallest swap it at index 0 and then move to next element 
+
+BUBBLE SORT
+    -FIND MAX AND PUSH IT TO RIGHT
+    -compare the element with adjacent element and then swap until the max reaches to the last
+    eg: compare 23 with 6 then swap until the the 45 reaches to end then start again from first index but till index-1
+
+INSERTION SORT
