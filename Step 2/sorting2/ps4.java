@@ -1,3 +1,6 @@
+// MERGE SORT - DIVIDE AND CONQUER 
+// TC = O(n log n);
+// SC = O(1);
 
 /**
  * ps4
