@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAHAY — AI-Assisted Stress & Trauma Assessment | NHAA 14566 | Ministry of Social Justice & Empowerment</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Sans:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{sans:['Inter','system-ui','sans-serif'], display:['Instrument Sans','Inter','sans-serif']},
+      colors:{
+        gov:{blue:'#1B2A4A', navy:'#0F1E3A', saffron:'#FF8A00', green:'#138808'},
+        sahay:{teal:'#0F766E', tealDark:'#0D5C56', indigo:'#2D3A8C', slate:'#F1F5F9', cream:'#FFFBF5'}
+      },
+      boxShadow:{card:'0 4px 24px rgba(15,30,58,0.06)', cardHover:'0 8px 32px rgba(15,30,58,0.10)', glow:'0 0 0 4px rgba(15,118,110,0.12)'}
+    }
+  }
+}
+</script>
+<style>
+*{scrollbar-width:thin; scrollbar-color:#CBD5E1 transparent}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:999px}
+.wave-bar{animation:wave 1.2s ease-in-out infinite}
+@keyframes wave{0%,100%{height:8px}50%{height:28px}}
+@keyframes pulseSoft{0%,100%{opacity:1}50%{opacity:0.6}}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.shimmer{position:relative;overflow:hidden}
+.shimmer:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent);transform:translateX(-100%);animation:shimmer 1.8s infinite}
+.range-thumb::-webkit-slider-thumb{appearance:none;width:24px;height:24px;border-radius:999px;background:#0F766E;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer}
+.range-thumb::-moz-range-thumb{width:24px;height:24px;border-radius:999px;background:#0F766E;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer}
+.glass{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+</style>
+</head>
+<body class="bg-[#FFFBF5] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900">
+
+<!-- Tricolor -->
+<div class="h-[5px] w-full bg-gradient-to-r from-[#FF8A00] via-white to-[#138808]"></div>
+
+<!-- Govt Strip -->
+<div class="bg-white border-b border-slate-200">
+  <div class="max-w-[1440px] mx-auto px-4 lg:px-6 h-[52px] flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3 min-w-0">
+      <div class="w-9 h-9 rounded-full bg-[#1B2A4A] flex items-center justify-center shrink-0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.2"/><g stroke="white" stroke-width="1.1" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/><circle cx="12" cy="12" r="3.2"/></g></svg>
+      </div>
+      <div class="min-w-0">
+        <div class="text-[11px] font-bold tracking-[0.14em] text-[#1B2A4A] uppercase leading-none">Government of India</div>
+        <div class="text-[12px] font-semibold text-slate-700 leading-tight truncate">Ministry of Social Justice and Empowerment</div>
+        <div class="text-[11px] text-slate-500 hidden sm:block leading-none">National Helpline Against Atrocities • NHAA</div>
+      </div>
+      <span class="hidden md:inline-flex ml-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-[11px] font-bold tracking-wide text-amber-700">SIH 2026 • SMART AUTOMATION</span>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <div class="hidden lg:flex items-center gap-2 text-[11px] font-semibold text-slate-600 bg-slate-50 border border-slate-200 rounded-full px-3 py-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> NHAA Portal Live • 14566
+        <span class="w-px h-3 bg-slate-300"></span> 24×7 • Toll-free
+      </div>
+      <a href="tel:14566" class="inline-flex items-center gap-1.5 bg-[#C2410C] hover:bg-[#9A3412] text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-sm transition">
+        <i data-lucide="phone" class="w-3.5 h-3.5"></i> 14566
+      </a>
+      <button onclick="toggleContrast()" class="hidden sm:inline-flex w-8 h-8 items-center justify-center rounded-full border border-slate-200 bg-white hover:bg-slate-50" title="High contrast"><i data-lucide="contrast" class="w-4 h-4 text-slate-600"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Nav -->
+<div class="sticky top-0 z-40 bg-white/90 glass border-b border-slate-200">
+  <div class="max-w-[1440px] mx-auto px-4 lg:px-6 h-[68px] flex items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-[#0F766E] flex items-center justify-center shadow-sm">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3c-1.2 2.2-3.5 3.5-6 3.5 0 4.2 2.7 7.8 6 9.5 3.3-1.7 6-5.3 6-9.5-2.5 0-4.8-1.3-6-3.5Z" fill="white" stroke="white" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4" stroke="#0F766E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="flex items-baseline gap-2">
+            <h1 class="font-display font-bold text-[22px] tracking-tight text-[#1B2A4A] leading-none">SAHAY</h1>
+            <span class="hidden sm:inline text-[10px] font-bold tracking-[0.16em] text-white bg-[#1B2A4A] px-1.5 py-0.5 rounded">सहाय</span>
+          </div>
+          <p class="text-[11px] font-medium tracking-wide text-slate-500 leading-none mt-0.5">AI-Assisted Stress & Trauma Assessment for Victim Support</p>
+        </div>
+      </div>
+      <span class="hidden xl:inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-1 ml-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> AI Decision-Support • Simulation Mode
+      </span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <div class="hidden md:flex items-center p-1 bg-slate-100 rounded-full border border-slate-200">
+        <button id="btnVictim" onclick="switchMode('victim')" class="px-4 py-1.5 rounded-full text-sm font-semibold bg-[#1B2A4A] text-white shadow-sm transition">Victim Experience</button>
+        <button id="btnOperator" onclick="switchMode('operator')" class="px-4 py-1.5 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition">Operator Console</button>
+      </div>
+      <button onclick="openEmergency()" class="hidden sm:inline-flex items-center gap-2 bg-white border border-red-200 text-red-700 hover:bg-red-50 text-xs font-bold px-3 py-2 rounded-full">
+        <i data-lucide="shield-alert" class="w-4 h-4"></i> Get Immediate Help
+      </button>
+      <button onclick="document.getElementById('mobileMode').classList.toggle('hidden')" class="md:hidden w-9 h-9 grid place-items-center rounded-full border border-slate-200 bg-white"><i data-lucide="menu" class="w-5 h-5"></i></button>
+    </div>
+  </div>
+  <div id="mobileMode" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-3">
+    <div class="flex p-1 bg-slate-100 rounded-full">
+      <button onclick="switchMode('victim')" class="flex-1 py-2 rounded-full text-sm font-bold bg-[#1B2A4A] text-white">Victim</button>
+      <button onclick="switchMode('operator')" class="flex-1 py-2 rounded-full text-sm font-bold text-slate-600">Operator</button>
+    </div>
+  </div>
+</div>
+
+<!-- Victim View -->
+<main id="victimView" class="">
+  <!-- Hero -->
+  <section class="max-w-[1440px] mx-auto px-4 lg:px-6 pt-6 pb-4">
+    <div class="grid grid-cols-12 gap-5">
+      <!-- Left -->
+      <div class="col-span-12 lg:col-span-7">
+        <div class="bg-white rounded-[20px] border border-slate-200 shadow-card p-6 lg:p-7">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wide text-teal-700 bg-teal-50 border border-teal-200 rounded-full px-2.5 py-1"><span class="w-1.5 h-1.5 bg-teal-600 rounded-full animate-pulse"></span> Confidential • Secure • Trauma-informed</span>
+            <span class="text-[11px] font-medium text-slate-500">Avg. response &lt; 90 seconds • No data stored without consent</span>
+            <span class="ml-auto inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600"><i data-lucide="lock" class="w-3 h-3"></i> End-to-end protected</span>
+          </div>
+          <h2 class="font-display font-bold text-[30px] lg:text-[34px] leading-[1.05] tracking-tight text-[#1B2A4A]">You are safe here. <span class="text-[#0F766E]">We will listen</span> — without judgement.</h2>
+          <p class="text-[13px] leading-relaxed text-slate-600 mt-3 max-w-[60ch]">SAHAY helps the NHAA (14566) team understand stress and trauma in real time, so you get the right support — counselling, legal aid or protection — without having to repeat your story.</p>
+
+          <div class="grid grid-cols-3 gap-3 mt-5">
+            <div class="rounded-2xl bg-[#FFF7ED] border border-orange-200 p-3">
+              <div class="w-8 h-8 rounded-full bg-white border border-orange-200 grid place-items-center"><i data-lucide="phone-call" class="w-4 h-4 text-orange-600"></i></div>
+              <div class="text-xs font-bold text-slate-800 mt-2">Talk to a person</div>
+              <div class="text-[11px] text-slate-600 leading-tight">Call 14566 — free, 24×7, any language</div>
+            </div>
+            <div class="rounded-2xl bg-teal-50 border border-teal-200 p-3">
+              <div class="w-8 h-8 rounded-full bg-white border border-teal-200 grid place-items-center"><i data-lucide="message-circle-heart" class="w-4 h-4 text-teal-700"></i></div>
+              <div class="text-xs font-bold text-slate-800 mt-2">Chat quietly</div>
+              <div class="text-[11px] text-slate-600 leading-tight">Text-based, at your pace. Pause anytime.</div>
+            </div>
+            <div class="rounded-2xl bg-indigo-50 border border-indigo-200 p-3">
+              <div class="w-8 h-8 rounded-full bg-white border border-indigo-200 grid place-items-center"><i data-lucide="file-heart" class="w-4 h-4 text-indigo-700"></i></div>
+              <div class="text-xs font-bold text-slate-800 mt-2">Report & track</div>
+              <div class="text-[11px] text-slate-600 leading-tight">File on Integrated Portal with reference ID</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+            <button onclick="scrollToAssessment()" class="inline-flex items-center gap-2 bg-[#0F766E] hover:bg-[#0D5C56] text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-sm transition"><i data-lucide="sparkles" class="w-4 h-4"></i> Start calm check-in (2 min)</button>
+            <button onclick="openBreathing()" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-semibold px-4 py-2.5 rounded-full"><i data-lucide="wind" class="w-4 h-4"></i> Breathing exercise</button>
+            <button onclick="openConsent()" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-semibold px-4 py-2.5 rounded-full"><i data-lucide="shield-check" class="w-4 h-4"></i> Privacy & consent</button>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 mt-4 text-[11px]">
+            <span class="inline-flex items-center gap-1.5 font-semibold text-slate-700"><i data-lucide="languages" class="w-3.5 h-3.5"></i> Language:</span>
+            <div class="flex gap-1.5" id="langChips">
+              <button onclick="setLang('en')" class="langBtn px-2.5 py-1 rounded-full bg-[#1B2A4A] text-white font-bold">English</button>
+              <button onclick="setLang('hi')" class="langBtn px-2.5 py-1 rounded-full bg-white border border-slate-200 font-semibold">हिन्दी</button>
+              <button onclick="setLang('mr')" class="langBtn px-2.5 py-1 rounded-full bg-white border border-slate-200 font-semibold">मराठी</button>
+              <button onclick="setLang('ta')" class="langBtn px-2.5 py-1 rounded-full bg-white border border-slate-200 font-semibold">தமிழ்</button>
+            </div>
+            <span class="ml-auto inline-flex items-center gap-1.5 text-slate-500"><i data-lucide="ear" class="w-3.5 h-3.5"></i> Screen reader friendly • <span class="underline decoration-dotted">High contrast</span></span>
+          </div>
+        </div>
+
+        <!-- Assessment Card -->
+        <div id="assessment" class="mt-5 bg-white rounded-[20px] border border-slate-200 shadow-card overflow-hidden">
+          <div class="px-6 pt-5 pb-4 border-b border-slate-100 flex items-center justify-between gap-4">
+            <div>
+              <div class="text-[11px] font-bold tracking-[0.14em] text-teal-700 uppercase">Guided Check-in</div>
+              <h3 class="font-display font-bold text-[18px] text-[#1B2A4A] leading-tight">How are you feeling right now?</h3>
+              <p class="text-xs text-slate-500">Your answers help us prioritise support. You can skip any question.</p>
+            </div>
+            <div class="text-right shrink-0">
+              <div class="text-[11px] font-semibold text-slate-500">Step <span id="stepNo">1</span> of 5</div>
+              <div class="w-28 h-1.5 bg-slate-100 rounded-full overflow-hidden mt-1"><div id="stepBar" class="h-full bg-[#0F766E] rounded-full transition-all" style="width:20%"></div></div>
+            </div>
+          </div>
+
+          <!-- Step 1: Consent -->
+          <div class="assessmentStep p-6" data-step="1">
+            <div class="rounded-2xl bg-amber-50 border border-amber-200 p-4 flex gap-3">
+              <div class="w-9 h-9 rounded-full bg-white border border-amber-200 grid place-items-center shrink-0"><i data-lucide="info" class="w-4 h-4 text-amber-700"></i></div>
+              <div class="text-[13px] leading-relaxed text-slate-700">
+                <span class="font-bold">Your control matters.</span> SAHAY will analyse tone and words only to estimate stress — not to judge you. You can share anonymously. Nothing is recorded without your explicit consent.
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <label class="inline-flex items-center gap-2 text-xs font-semibold bg-white border border-slate-200 rounded-full px-3 py-1.5 cursor-pointer"><input id="consentCheck" type="checkbox" class="accent-teal-600 w-4 h-4"> I consent to AI-assisted support (you can withdraw anytime)</label>
+                  <label class="inline-flex items-center gap-2 text-xs font-semibold bg-white border border-slate-200 rounded-full px-3 py-1.5 cursor-pointer"><input id="anonCheck" type="checkbox" checked class="accent-teal-600 w-4 h-4"> Keep me anonymous</label>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 flex justify-end">
+              <button onclick="nextStep()" class="bg-[#1B2A4A] hover:bg-[#0F1E3A] text-white text-sm font-bold px-5 py-2.5 rounded-full">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Feeling scale -->
+          <div class="assessmentStep hidden p-6" data-step="2">
+            <div class="text-sm font-semibold text-slate-800">In the last few hours, how overwhelmed have you felt?</div>
+            <div class="grid grid-cols-5 gap-2 mt-4">
+              <button onclick="pickFeel(1)" class="feelBtn group rounded-2xl border-2 border-transparent bg-slate-50 hover:bg-white hover:border-teal-200 p-3 text-center transition" data-v="1">
+                <div class="text-2xl">😌</div><div class="text-xs font-bold mt-1">Calm</div><div class="text-[11px] text-slate-500">At ease</div>
+              </button>
+              <button onclick="pickFeel(2)" class="feelBtn group rounded-2xl border-2 border-transparent bg-slate-50 hover:bg-white hover:border-teal-200 p-3 text-center transition" data-v="2">
+                <div class="text-2xl">😐</div><div class="text-xs font-bold mt-1">Uneasy</div><div class="text-[11px] text-slate-500">A little tense</div>
+              </button>
+              <button onclick="pickFeel(3)" class="feelBtn group rounded-2xl border-2 border-transparent bg-orange-50 hover:bg-white hover:border-orange-300 p-3 text-center transition" data-v="3">
+                <div class="text-2xl">😰</div><div class="text-xs font-bold mt-1">Anxious</div><div class="text-[11px] text-slate-500">Racing thoughts</div>
+              </button>
+              <button onclick="pickFeel(4)" class="feelBtn group rounded-2xl border-2 border-transparent bg-orange-50 hover:bg-white hover:border-orange-300 p-3 text-center transition" data-v="4">
+                <div class="text-2xl">😢</div><div class="text-xs font-bold mt-1">Distressed</div><div class="text-[11px] text-slate-500">Heavy, tearful</div>
+              </button>
+              <button onclick="pickFeel(5)" class="feelBtn group rounded-2xl border-2 border-transparent bg-red-50 hover:bg-white hover:border-red-300 p-3 text-center transition" data-v="5">
+                <div class="text-2xl">😨</div><div class="text-xs font-bold mt-1">Overwhelmed</div><div class="text-[11px] text-slate-500">Unsafe</div>
+              </button>
+            </div>
+            <div class="mt-4">
+              <label class="text-xs font-semibold text-slate-700">Or move the slider</label>
+              <input id="feelSlider" type="range" min="1" max="5" value="3" class="range-thumb w-full mt-2 accent-teal-600">
+              <div class="flex justify-between text-[11px] font-medium text-slate-500"><span>Calm</span><span>Overwhelmed</span></div>
+            </div>
+            <div class="mt-5 flex justify-between">
+              <button onclick="prevStep()" class="text-sm font-semibold px-4 py-2 rounded-full border border-slate-200">Back</button>
+              <button onclick="nextStep()" class="bg-[#1B2A4A] hover:bg-[#0F1E3A] text-white text-sm font-bold px-5 py-2.5 rounded-full">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: What happened -->
+          <div class="assessmentStep hidden p-6" data-step="3">
+            <div class="text-sm font-semibold text-slate-800">Would you like to share what happened? <span class="font-normal text-slate-500">(optional — short phrases are enough)</span></div>
+            <div class="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+              <textarea id="shareText" rows="3" placeholder="Example: I was threatened near my home yesterday and I’m scared to go back..." class="w-full bg-white rounded-xl border border-slate-200 p-3 text-sm outline-none focus:border-teal-300 focus:ring-4 focus:ring-teal-50"></textarea>
+              <div class="flex flex-wrap items-center gap-2 mt-2">
+                <button onclick="simulateVoice()" class="inline-flex items-center gap-1.5 text-xs font-bold bg-white border border-slate-200 rounded-full px-3 py-1.5 hover:bg-slate-50"><i data-lucide="mic" class="w-3.5 h-3.5"></i> Use voice instead</button>
+                <span class="text-[11px] text-slate-500">AI will detect distress cues to prioritise help — <button onclick="openExplain()" class="underline">see how</button></span>
+                <span id="charCount" class="ml-auto text-[11px] text-slate-500">0 words</span>
+              </div>
+              <!-- Simulated AI live analysis -->
+              <div id="liveAnalysis" class="hidden mt-3 grid grid-cols-3 gap-2">
+                <div class="rounded-xl bg-white border border-slate-200 p-2.5">
+                  <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Stress estimate</div>
+                  <div class="flex items-baseline gap-1"><span id="liveStress" class="text-lg font-extrabold text-amber-600">62</span><span class="text-xs font-semibold text-slate-500">/100</span></div>
+                  <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden"><div id="liveStressBar" class="h-full bg-amber-500" style="width:62%"></div></div>
+                </div>
+                <div class="rounded-xl bg-white border border-slate-200 p-2.5">
+                  <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Emotion</div>
+                  <div id="liveEmotion" class="text-sm font-bold text-slate-800">Fear • Vigilance</div>
+                  <div class="text-[11px] text-slate-500">Updated as you type</div>
+                </div>
+                <div class="rounded-xl bg-white border border-slate-200 p-2.5">
+                  <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Keywords</div>
+                  <div id="liveKeywords" class="flex flex-wrap gap-1 mt-1"><span class="text-[11px] bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5">scared</span><span class="text-[11px] bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5">threatened</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <button onclick="prevStep()" class="text-sm font-semibold px-4 py-2 rounded-full border border-slate-200">Back</button>
+              <div class="flex gap-2">
+                <button onclick="nextStep(true)" class="text-sm font-semibold px-4 py-2 rounded-full border border-slate-200">Skip</button>
+                <button onclick="nextStep()" class="bg-[#1B2A4A] hover:bg-[#0F1E3A] text-white text-sm font-bold px-5 py-2.5 rounded-full">Continue →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Safety -->
+          <div class="assessmentStep hidden p-6" data-step="4">
+            <div class="text-sm font-semibold text-slate-800">Are you safe right now?</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
+              <button onclick="pickSafety('safe')" class="safetyBtn rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-4 text-left hover:bg-white transition" data-v="safe">
+                <div class="w-8 h-8 rounded-full bg-white border border-emerald-200 grid place-items-center"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-700"></i></div>
+                <div class="text-sm font-bold mt-2">Yes, I’m safe</div><div class="text-xs text-slate-600">I have support nearby</div>
+              </button>
+              <button onclick="pickSafety('unsure')" class="safetyBtn rounded-2xl border-2 border-amber-200 bg-amber-50 p-4 text-left hover:bg-white transition" data-v="unsure">
+                <div class="w-8 h-8 rounded-full bg-white border border-amber-200 grid place-items-center"><i data-lucide="shield-question" class="w-4 h-4 text-amber-700"></i></div>
+                <div class="text-sm font-bold mt-2">Not sure</div><div class="text-xs text-slate-600">I feel uneasy / watched</div>
+              </button>
+              <button onclick="pickSafety('unsafe')" class="safetyBtn rounded-2xl border-2 border-red-200 bg-red-50 p-4 text-left hover:bg-white transition" data-v="unsafe">
+                <div class="w-8 h-8 rounded-full bg-white border border-red-200 grid place-items-center"><i data-lucide="siren" class="w-4 h-4 text-red-700"></i></div>
+                <div class="text-sm font-bold mt-2">No — need help</div><div class="text-xs text-slate-600">Immediate support</div>
+              </button>
+            </div>
+            <label class="mt-4 flex items-center gap-2 text-xs font-medium text-slate-700"><input id="contactConsent" type="checkbox" class="accent-teal-600"> I agree to be contacted by a trained counsellor on my preferred number/time</label>
+            <div class="mt-5 flex justify-between">
+              <button onclick="prevStep()" class="text-sm font-semibold px-4 py-2 rounded-full border border-slate-200">Back</button>
+              <button onclick="nextStep()" class="bg-[#1B2A4A] hover:bg-[#0F1E3A] text-white text-sm font-bold px-5 py-2.5 rounded-full">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Preferences & Submit -->
+          <div class="assessmentStep hidden p-6" data-step="5">
+            <div class="text-sm font-semibold text-slate-800">What support would help most? <span class="font-normal text-slate-500">(choose any)</span></div>
+            <div class="grid grid-cols-2 gap-2 mt-3">
+              <label class="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium cursor-pointer"><input type="checkbox" class="accent-teal-600 pref" value="Counselling"> <i data-lucide="heart-handshake" class="w-4 h-4 text-teal-700"></i> Counselling</label>
+              <label class="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium cursor-pointer"><input type="checkbox" class="accent-teal-600 pref" value="Legal aid"> <i data-lucide="scale" class="w-4 h-4 text-indigo-700"></i> Legal aid</label>
+              <label class="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium cursor-pointer"><input type="checkbox" class="accent-teal-600 pref" value="Protection"> <i data-lucide="shield" class="w-4 h-4 text-slate-700"></i> Protection & safety</label>
+              <label class="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium cursor-pointer"><input type="checkbox" class="accent-teal-600 pref" value="Medical"> <i data-lucide="stethoscope" class="w-4 h-4 text-rose-600"></i> Medical help</label>
+            </div>
+            <div class="mt-4 rounded-xl bg-teal-50 border border-teal-200 p-3 flex gap-3">
+              <i data-lucide="bot" class="w-5 h-5 text-teal-700 shrink-0"></i>
+              <div class="text-xs leading-relaxed text-teal-900"><span class="font-bold">SAHAY AI:</span> Based on your check-in we’ll generate a priority summary for the NHAA operator so you don’t have to repeat details. You’ll get a reference ID to track progress.</div>
+            </div>
+            <div class="mt-5 flex justify-between">
+              <button onclick="prevStep()" class="text-sm font-semibold px-4 py-2 rounded-full border border-slate-200">Back</button>
+              <button onclick="submitAssessment()" class="bg-[#0F766E] hover:bg-[#0D5C56] text-white text-sm font-bold px-6 py-2.5 rounded-full shadow-sm">Generate my support plan →</button>
+            </div>
+          </div>
+
+          <!-- Success -->
+          <div id="successPane" class="hidden p-6">
+            <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-5">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-600 text-white grid place-items-center shrink-0"><i data-lucide="check" class="w-5 h-5"></i></div>
+                <div>
+                  <div class="text-sm font-extrabold text-emerald-900">Your confidential summary is ready — and an operator has been notified.</div>
+                  <div class="text-xs text-emerald-800 mt-1">Reference ID: <span id="refId" class="font-mono font-bold bg-white border border-emerald-200 rounded px-1.5 py-0.5">SAH-2026-0847</span> • Priority: <span id="priorityBadge" class="inline-flex items-center gap-1 bg-amber-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-full">HIGH — Immediate outreach</span></div>
+                  <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                    <div class="bg-white border border-emerald-200 rounded-xl p-2.5"><div class="font-bold">What happens next</div><div class="text-slate-600">A trained NHAA counsellor will call/chat within 15 minutes.</div></div>
+                    <div class="bg-white border border-emerald-200 rounded-xl p-2.5"><div class="font-bold">Your data</div><div class="text-slate-600">Stored only with consent. Delete anytime: write to sahay-support@14566.gov.in</div></div>
+                    <div class="bg-white border border-emerald-200 rounded-xl p-2.5"><div class="font-bold">Need urgent help?</div><div class="text-slate-600"><a href="tel:14566" class="font-bold text-red-700 underline">Call 14566</a> or press Emergency above.</div></div>
+                  </div>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    <button onclick="switchMode('operator')" class="text-xs font-bold bg-[#1B2A4A] text-white px-4 py-2 rounded-full">View how operator sees this →</button>
+                    <button onclick="resetAssessment()" class="text-xs font-bold bg-white border border-slate-200 px-4 py-2 rounded-full">Start new check-in</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rights -->
+        <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="bg-white rounded-2xl border border-slate-200 p-4">
+            <div class="text-xs font-bold tracking-wide text-slate-500 uppercase">Your rights</div>
+            <div class="text-sm font-bold text-[#1B2A4A] mt-1">Protection under SC/ST (PoA) Act</div>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Free legal aid, protection, and compensation. No FIR can be refused.</p>
+            <a href="#" onclick="toast('Opening legal aid guide (demo)');return false" class="inline-flex items-center gap-1 text-xs font-bold text-teal-700 underline mt-2">Learn more <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-4">
+            <div class="text-xs font-bold tracking-wide text-slate-500 uppercase">Integrated Portal</div>
+            <div class="text-sm font-bold text-[#1B2A4A] mt-1">One ID across call & web</div>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Your call, chat and portal complaint stay linked — no repetition.</p>
+            <button onclick="toast('Portal sync is simulated in this prototype')" class="inline-flex items-center gap-1 text-xs font-bold text-teal-700 underline mt-2">How syncing works</button>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-4">
+            <div class="text-xs font-bold tracking-wide text-slate-500 uppercase">After-care</div>
+            <div class="text-sm font-bold text-[#1B2A4A] mt-1">Counselling & follow-ups</div>
+            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Scheduled check-ins until you say you’re okay to close.</p>
+            <button onclick="openBreathing()" class="inline-flex items-center gap-1 text-xs font-bold text-teal-700 underline mt-2">Try grounding exercise</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="col-span-12 lg:col-span-5 space-y-5">
+        <!-- Live Support Card -->
+        <div class="bg-[#1B2A4A] rounded-[20px] p-5 text-white shadow-card relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+          <div class="flex items-center justify-between">
+            <div class="text-[11px] font-bold tracking-[0.14em] text-white/70 uppercase">NHAA Live Support</div>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-emerald-500 text-white px-2 py-1 rounded-full"><span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span> Operators online</span>
+          </div>
+          <div class="mt-3 flex items-end gap-2">
+            <div class="text-3xl font-extrabold">14566</div>
+            <div class="text-xs font-medium text-white/70 mb-1">toll-free • confidential</div>
+            <a href="tel:14566" class="ml-auto hidden sm:inline-flex items-center gap-1.5 bg-white text-[#1B2A4A] text-xs font-extrabold px-4 py-2 rounded-full"><i data-lucide="phone" class="w-3.5 h-3.5"></i> Call now</a>
+          </div>
+          <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-xl bg-white/10 border border-white/15 p-2.5"><div class="text-lg font-extrabold">~48s</div><div class="text-[11px] text-white/70">Avg. wait</div></div>
+            <div class="rounded-xl bg-white/10 border border-white/15 p-2.5"><div class="text-lg font-extrabold">11</div><div class="text-[11px] text-white/70">Languages</div></div>
+            <div class="rounded-xl bg-white/10 border border-white/15 p-2.5"><div class="text-lg font-extrabold">24×7</div><div class="text-[11px] text-white/70">Always open</div></div>
+          </div>
+          <div class="mt-4 bg-white rounded-2xl p-3 text-slate-800">
+            <div class="flex items-center gap-2 text-xs font-bold"><i data-lucide="message-square" class="w-4 h-4 text-teal-700"></i> Quiet Chat — try a demo message</div>
+            <div class="mt-2 flex gap-2">
+              <input id="victimChatInput" placeholder="Type here — e.g., I need help, I’m scared..." class="flex-1 bg-slate-50 border border-slate-200 rounded-full px-3 py-2 text-sm outline-none focus:border-teal-300 focus:ring-4 focus:ring-teal-50">
+              <button onclick="sendVictimChat()" class="w-9 h-9 grid place-items-center rounded-full bg-[#0F766E] text-white shrink-0"><i data-lucide="send" class="w-4 h-4"></i></button>
+            </div>
+            <div id="victimChatLog" class="mt-3 space-y-2 max-h-[180px] overflow-auto pr-1">
+              <div class="flex gap-2"><div class="w-7 h-7 rounded-full bg-teal-50 border border-teal-200 grid place-items-center shrink-0"><i data-lucide="bot" class="w-3.5 h-3.5 text-teal-700"></i></div><div class="bg-teal-50 border border-teal-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs leading-relaxed">Hi, I’m SAHAY. You can write in any language. Take your time — I’m here to listen. <span class="font-semibold">Would you like to start the 2-minute check-in?</span></div></div>
+            </div>
+            <div class="mt-2 flex items-center gap-1.5 text-[11px] text-slate-500"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> AI is listening privately on this device</div>
+          </div>
+        </div>
+
+        <!-- Calm Aid -->
+        <div class="bg-white rounded-[20px] border border-slate-200 shadow-card p-5">
+          <div class="flex items-center gap-2"><i data-lucide="heart-pulse" class="w-4 h-4 text-teal-700"></i><h4 class="text-sm font-bold text-[#1B2A4A]">If you feel overwhelmed right now</h4></div>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <button onclick="openBreathing()" class="rounded-xl border border-teal-200 bg-teal-50 p-3 text-left hover:bg-white transition">
+              <div class="text-xs font-bold">🌿 60-sec breathing</div><div class="text-[11px] text-slate-600">Inhale 4 • Hold 2 • Exhale 6</div>
+            </button>
+            <button onclick="toast('Grounding: Name 5 things you see, 4 you touch, 3 you hear, 2 you smell, 1 you taste — you are safe.')" class="rounded-xl border border-slate-200 bg-slate-50 p-3 text-left hover:bg-white transition">
+              <div class="text-xs font-bold">🧭 Grounding 5-4-3-2-1</div><div class="text-[11px] text-slate-600">Bring your mind to the present</div>
+            </button>
+          </div>
+          <div class="mt-3 rounded-xl bg-slate-50 border border-slate-200 p-3 flex items-center gap-3">
+            <div class="flex items-center gap-1">
+              <div class="wave-bar w-1 bg-teal-600 rounded-full" style="animation-delay:0ms"></div>
+              <div class="wave-bar w-1 bg-teal-600 rounded-full" style="animation-delay:120ms"></div>
+              <div class="wave-bar w-1 bg-teal-600 rounded-full" style="animation-delay:240ms"></div>
+              <div class="wave-bar w-1 bg-teal-600 rounded-full" style="animation-delay:360ms"></div>
+              <div class="wave-bar w-1 bg-teal-600 rounded-full" style="animation-delay:480ms"></div>
+            </div>
+            <div class="text-xs"><span class="font-bold">AI is not recording</span> — analysis happens locally until you consent to share.</div>
+            <span class="ml-auto inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-1"><i data-lucide="lock" class="w-3 h-3"></i> Private</span>
+          </div>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="bg-white rounded-[20px] border border-slate-200 shadow-card p-5">
+          <h4 class="text-sm font-bold text-[#1B2A4A] flex items-center gap-2"><i data-lucide="accessibility" class="w-4 h-4 text-indigo-700"></i> Accessibility</h4>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <button onclick="adjustFont(1)" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white font-semibold hover:bg-slate-50">A+ Larger text</button>
+            <button onclick="adjustFont(-1)" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white font-semibold hover:bg-slate-50">A- Smaller</button>
+            <button onclick="toggleContrast()" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white font-semibold hover:bg-slate-50">High contrast</button>
+            <button onclick="speakPage()" class="px-3 py-1.5 rounded-full bg-[#1B2A4A] text-white font-bold">🔊 Read aloud</button>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-2">Built to WCAG AA, works with screen readers, keyboards, and low-bandwidth connections.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="mt-6 bg-white border border-slate-200 rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div class="flex items-center gap-2 font-semibold text-slate-700"><i data-lucide="badge-check" class="w-4 h-4 text-teal-700"></i> Official NHAA Integrated Portal • Data handling as per Govt. of India guidelines</div>
+      <div class="flex items-center gap-2 text-slate-500"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> No ads • No tracking • Consent-first AI</div>
+      <div class="flex items-center gap-2"><span class="text-slate-500">In partnership with</span><span class="font-bold text-[#1B2A4A]">NHAA • MoSJE</span></div>
+    </div>
+  </section>
+</main>
+
+<!-- Operator View -->
+<main id="operatorView" class="hidden">
+  <div class="max-w-[1440px] mx-auto px-4 lg:px-6 py-4">
+    <!-- KPIs -->
+    <div class="grid grid-cols-12 gap-3">
+      <div class="col-span-12 lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <div class="text-[10px] font-bold tracking-[0.12em] text-slate-500 uppercase flex items-center gap-1"><i data-lucide="phone-incoming" class="w-3 h-3"></i> Live queue</div>
+          <div class="flex items-baseline gap-2 mt-1"><span class="text-2xl font-extrabold text-[#1B2A4A]">07</span><span class="text-xs font-semibold text-amber-600 bg-amber-50 border border-amber-200 rounded-full px-1.5 py-0.5">03 High</span></div>
+          <div class="text-[11px] text-slate-500">2 waiting > 2 min • SLA 90s</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <div class="text-[10px] font-bold tracking-[0.12em] text-slate-500 uppercase">Avg. stress (today)</div>
+          <div class="flex items-baseline gap-2 mt-1"><span class="text-2xl font-extrabold text-amber-600">68</span><span class="text-xs text-slate-500">/100</span><span class="text-[11px] font-bold text-red-700 bg-red-50 border border-red-200 rounded-full px-1.5">↑ 6 vs yesterday</span></div>
+          <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden mt-2"><div class="h-full bg-amber-500" style="width:68%"></div></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <div class="text-[10px] font-bold tracking-[0.12em] text-slate-500 uppercase">Trauma flags</div>
+          <div class="flex items-baseline gap-2 mt-1"><span class="text-2xl font-extrabold text-red-600">05</span><span class="text-xs font-semibold text-slate-600">needs supervisor review</span></div>
+          <div class="text-[11px] text-slate-500">Auto-escalated by SAHAY AI</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <div class="text-[10px] font-bold tracking-[0.12em] text-slate-500 uppercase">Cases closed today</div>
+          <div class="flex items-baseline gap-2 mt-1"><span class="text-2xl font-extrabold text-emerald-700">24</span><span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-1.5">92% CSAT</span></div>
+          <div class="text-[11px] text-slate-500">Avg. handle time 7m 12s</div>
+        </div>
+      </div>
+      <div class="col-span-12 lg:col-span-3 bg-[#1B2A4A] rounded-2xl p-4 text-white flex flex-col justify-between">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.14em] text-white/60 uppercase">Operator assist</div>
+          <div class="text-sm font-bold leading-tight mt-1">Trauma-informed scripts • Real-time nudges • Auto case notes</div>
+        </div>
+        <div class="flex gap-2 mt-3">
+          <button onclick="simulateIncoming()" class="flex-1 bg-white text-[#1B2A4A] text-xs font-extrabold px-3 py-2 rounded-full">Simulate incoming 14566 call</button>
+          <button onclick="toast('Supervisor view opened (demo)')" class="px-3 py-2 rounded-full bg-white/10 border border-white/20 text-xs font-semibold">Supervisor</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="grid grid-cols-12 gap-4 mt-4">
+      <!-- Queue -->
+      <div class="col-span-12 lg:col-span-3">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+            <h3 class="text-sm font-bold text-[#1B2A4A] flex items-center gap-2"><i data-lucide="list-ordered" class="w-4 h-4"></i> Queue & Cases</h3>
+            <div class="flex items-center gap-1 text-[11px]">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live
+              <button onclick="toast('Filters: High / Medium / Waiting')" class="ml-2 px-2 py-1 rounded-full border border-slate-200 bg-slate-50 font-semibold">Filter</button>
+            </div>
+          </div>
+          <div class="p-2 space-y-2 max-h-[520px] overflow-auto" id="queueList">
+            <!-- Active -->
+            <div class="rounded-xl border-2 border-teal-300 bg-teal-50 p-3">
+              <div class="flex items-center justify-between"><span class="text-xs font-extrabold text-teal-800">● LIVE — SAH-2026-0847</span><span class="text-[11px] font-bold bg-red-600 text-white px-2 py-0.5 rounded-full">HIGH</span></div>
+              <div class="text-xs font-semibold text-slate-800 mt-1">Anonymous • Hindi • Web chat → Call</div>
+              <div class="text-[11px] text-slate-600">Threat near home, fear of retaliation • Stress 78/100</div>
+              <div class="mt-2 flex gap-1.5">
+                <button onclick="acceptCall()" class="flex-1 bg-[#0F766E] text-white text-xs font-bold px-3 py-1.5 rounded-full">Accept</button>
+                <button onclick="toast('Added to watchlist')" class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold">Hold</button>
+              </div>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-white p-3">
+              <div class="flex items-center justify-between"><span class="text-xs font-bold">SAH-2026-0846 • 2m wait</span><span class="text-[11px] font-bold bg-amber-500 text-white px-2 py-0.5 rounded-full">MED</span></div>
+              <div class="text-[11px] text-slate-600">Wage denial + intimidation • Portal filed</div>
+              <div class="text-[11px] text-slate-500">Stress 54 • Calm but anxious</div>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-white p-3">
+              <div class="flex items-center justify-between"><span class="text-xs font-bold">SAH-2026-0845 • 4m wait</span><span class="text-[11px] font-bold bg-emerald-600 text-white px-2 py-0.5 rounded-full">LOW</span></div>
+              <div class="text-[11px] text-slate-600">Follow-up • Compensation status</div>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <div class="text-xs font-bold text-slate-700">Integrated Portal sync</div>
+              <div class="text-[11px] text-slate-600">3 new web complaints linked to phone numbers automatically</div>
+              <button onclick="toast('Portal sync is simulated')" class="mt-2 text-[11px] font-bold text-teal-700 underline">View linked records</button>
+            </div>
+          </div>
+          <div class="px-3 py-3 border-t border-slate-200">
+            <div class="text-[11px] font-bold tracking-wide text-slate-500 uppercase">Past cases (today)</div>
+            <div class="mt-2 overflow-auto">
+              <table class="w-full text-xs">
+                <thead class="text-[11px] text-slate-500"><tr><th class="text-left font-semibold py-1">ID</th><th class="text-left font-semibold">Risk</th><th class="text-left font-semibold">Status</th></tr></thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr><td class="py-1.5 font-mono">SAH-0840</td><td><span class="bg-red-50 text-red-700 border border-red-200 px-1.5 py-0.5 rounded-full text-[11px] font-bold">High</span></td><td class="text-emerald-700 font-semibold">Closed • Counselling</td></tr>
+                  <tr><td class="py-1.5 font-mono">SAH-0839</td><td><span class="bg-amber-50 text-amber-700 border border-amber-200 px-1.5 py-0.5 rounded-full text-[11px] font-bold">Med</span></td><td class="text-slate-600">Escalated • Legal</td></tr>
+                  <tr><td class="py-1.5 font-mono">SAH-0838</td><td><span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded-full text-[11px] font-bold">Low</span></td><td class="text-slate-600">Follow-up</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Live session -->
+      <div class="col-span-12 lg:col-span-6">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200 flex flex-wrap items-center gap-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <h3 class="text-sm font-bold text-[#1B2A4A]">Live session — SAH-2026-0847</h3>
+              <span id="callTimer" class="text-xs font-mono font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">00:42</span>
+            </div>
+            <div class="ml-auto flex items-center gap-1.5">
+              <button onclick="toast('Microphone muted (demo)')" class="w-8 h-8 grid place-items-center rounded-full border border-slate-200 bg-white"><i data-lucide="mic" class="w-4 h-4"></i></button>
+              <button onclick="toast('Call on hold')" class="w-8 h-8 grid place-items-center rounded-full border border-slate-200 bg-white"><i data-lucide="pause" class="w-4 h-4"></i></button>
+              <button onclick="openEscalate()" class="hidden sm:inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded-full"><i data-lucide="siren" class="w-3.5 h-3.5"></i> Escalate</button>
+              <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-1"><i data-lucide="shield-check" class="w-3 h-3"></i> Trauma-informed mode ON</span>
+            </div>
+          </div>
+
+          <!-- Waveform + transcript -->
+          <div class="p-4">
+            <div class="rounded-xl bg-slate-900 text-white p-3 flex items-center gap-3">
+              <div class="flex items-end gap-0.5 h-8">
+                <div class="w-1 bg-emerald-400 rounded-full wave-bar" style="height:14px"></div>
+                <div class="w-1 bg-emerald-400 rounded-full wave-bar" style="height:22px;animation-delay:100ms"></div>
+                <div class="w-1 bg-emerald-400 rounded-full wave-bar" style="height:10px;animation-delay:200ms"></div>
+                <div class="w-1 bg-teal-300 rounded-full wave-bar" style="height:26px;animation-delay:300ms"></div>
+                <div class="w-1 bg-teal-300 rounded-full wave-bar" style="height:18px;animation-delay:400ms"></div>
+                <div class="w-12 h-px bg-white/20 mx-2"></div>
+                <div class="w-1 bg-amber-300 rounded-full wave-bar" style="height:20px;animation-delay:150ms"></div>
+                <div class="w-1 bg-amber-300 rounded-full wave-bar" style="height:28px;animation-delay:250ms"></div>
+                <div class="w-1 bg-amber-300 rounded-full wave-bar" style="height:12px;animation-delay:350ms"></div>
+              </div>
+              <div class="text-xs">
+                <div class="font-bold">Real-time voice analysis (on-device)</div>
+                <div class="text-white/70 text-[11px]">Speech rate • Pauses • Pitch variance • Silence duration → Stress inference</div>
+              </div>
+              <div class="ml-auto hidden sm:flex items-center gap-2 text-[11px]">
+                <span class="px-2 py-1 rounded-full bg-white/10 border border-white/15">Diarization: Victim / Operator</span>
+                <span class="px-2 py-1 rounded-full bg-emerald-500 text-white font-bold">AI LIVE</span>
+              </div>
+            </div>
+
+            <div id="transcript" class="mt-3 space-y-3 max-h-[300px] overflow-auto pr-1">
+              <div class="flex gap-2">
+                <div class="w-7 h-7 rounded-full bg-slate-900 text-white grid place-items-center text-[10px] font-bold shrink-0">AI</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs max-w-[85%]">Call connected via 14566. SAHAY AI is now assisting. <span class="font-semibold">Suggest opening:</span> “Thank you for reaching out. You are safe to take your time. I’m here to listen.”</div>
+              </div>
+              <div class="flex gap-2">
+                <div class="w-7 h-7 rounded-full bg-orange-100 border border-orange-200 grid place-items-center shrink-0"><i data-lucide="user" class="w-3.5 h-3.5 text-orange-700"></i></div>
+                <div class="bg-orange-50 border border-orange-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs max-w-[85%]"><span class="font-bold">Victim (00:12):</span> “I’m scared to go back home… they threatened me yesterday near the market. I didn’t sleep.” <span class="ml-1 inline-flex items-center gap-1 text-[10px] font-bold bg-red-600 text-white px-1.5 py-0.5 rounded-full">distress keyword</span></div>
+              </div>
+              <div class="flex gap-2">
+                <div class="w-7 h-7 rounded-full bg-teal-600 text-white grid place-items-center shrink-0"><i data-lucide="headset" class="w-3.5 h-3.5"></i></div>
+                <div class="bg-teal-50 border border-teal-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs max-w-[85%]"><span class="font-bold">Operator:</span> “I hear you. Thank you for telling me. You don’t have to rush. Are you in a safe place right now?”</div>
+              </div>
+              <div class="flex gap-2">
+                <div class="w-7 h-7 rounded-full bg-orange-100 border border-orange-200 grid place-items-center shrink-0"><i data-lucide="user" class="w-3.5 h-3.5 text-orange-700"></i></div>
+                <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs max-w-[85%]"><span class="font-bold">Victim (00:38):</span> “Not really… I’m at a neighbour’s house but I have to go back. I’m feeling very anxious, my heart is racing.”</div>
+              </div>
+            </div>
+
+            <div class="mt-3 flex gap-2">
+              <input id="operatorReply" placeholder="Type operator response or use suggested reply →" class="flex-1 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-sm outline-none focus:border-teal-300 focus:ring-4 focus:ring-teal-50">
+              <button onclick="sendOperatorReply()" class="bg-[#1B2A4A] hover:bg-[#0F1E3A] text-white text-sm font-bold px-5 py-2 rounded-full">Send</button>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              <button onclick="useSuggestion('Take your time. Would you like to do a short breathing exercise together?')" class="text-xs bg-white border border-slate-200 hover:bg-slate-50 rounded-full px-3 py-1.5">“Take your time… breathing exercise?”</button>
+              <button onclick="useSuggestion('You deserve support and protection. I can connect you to legal aid and a counsellor right now.')" class="text-xs bg-white border border-slate-200 hover:bg-slate-50 rounded-full px-3 py-1.5">“You deserve support…”</button>
+              <button onclick="useSuggestion('I can stay on the line while we arrange a safe place. You don’t have to go back alone.')" class="text-xs bg-white border border-slate-200 hover:bg-slate-50 rounded-full px-3 py-1.5">“I can stay on the line…”</button>
+            </div>
+          </div>
+
+          <div class="px-4 pb-4">
+            <div class="rounded-xl border border-slate-200 p-3">
+              <div class="flex items-center justify-between">
+                <h4 class="text-xs font-bold tracking-wide text-slate-700 uppercase flex items-center gap-1.5"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> Auto case notes (editable)</h4>
+                <button onclick="generateSummary()" class="text-xs font-bold bg-[#0F766E] text-white px-3 py-1.5 rounded-full">Generate summary</button>
+              </div>
+              <div id="caseNotes" class="mt-2 text-xs leading-relaxed text-slate-700 bg-slate-50 border border-slate-200 rounded-xl p-3">
+                <span class="font-mono text-[11px] text-slate-500">NHAA/14566 • SAH-2026-0847 • 03 Sep 2026, 11:42 IST</span><br>
+                <span class="font-semibold">Incident:</span> Threat/intimidation near market (yesterday), fear of retaliation, sleep disturbance, anxiety/racing heart.<br>
+                <span class="font-semibold">Safety:</span> Currently at neighbour’s house, needs to return home — <span class="bg-amber-100 border border-amber-200 rounded px-1 font-bold">Safety: Not sure / At risk</span><br>
+                <span class="font-semibold">Support requested:</span> Counselling, Protection, Legal aid (inferred from check-in).<br>
+                <span class="font-semibold">Next step:</span> Safety planning + immediate counsellor callback within 15 min + legal aid referral.
+              </div>
+              <div class="mt-2 flex gap-2">
+                <button onclick="toast('Case notes copied')" class="text-xs font-semibold bg-white border border-slate-200 rounded-full px-3 py-1.5">Copy</button>
+                <button onclick="toast('Saved to Integrated Portal (demo)')" class="text-xs font-semibold bg-white border border-slate-200 rounded-full px-3 py-1.5">Save to Portal</button>
+                <button onclick="toast('Follow-up scheduled for 4 hours')" class="text-xs font-bold bg-amber-500 text-white rounded-full px-3 py-1.5">Schedule follow-up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: AI assist -->
+      <div class="col-span-12 lg:col-span-3 space-y-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-card overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+            <h3 class="text-sm font-bold text-[#1B2A4A] flex items-center gap-2"><i data-lucide="brain-circuit" class="w-4 h-4 text-teal-700"></i> SAHAY AI — Live assessment</h3>
+            <span class="text-[11px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded-full">Explainable</span>
+          </div>
+          <div class="p-4 space-y-3">
+            <!-- Gauges -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-center">
+                <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Stress Level</div>
+                <div class="relative w-20 h-20 mx-auto mt-1">
+                  <svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" stroke="#E2E8F0" stroke-width="8" fill="none"/><circle id="stressArc" cx="40" cy="40" r="32" stroke="#F59E0B" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="44" transform="rotate(-90 40 40)"/></svg>
+                  <div class="absolute inset-0 grid place-items-center"><div id="stressVal" class="text-xl font-extrabold text-amber-600">78</div></div>
+                </div>
+                <div id="stressLabel" class="text-xs font-bold text-amber-700">High — Elevated</div>
+                <div class="text-[11px] text-slate-500">Updates every ~5s</div>
+              </div>
+              <div class="rounded-xl bg-slate-50 border border-slate-200 p-3">
+                <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Trauma Risk</div>
+                <div class="mt-2 inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-full"><i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> HIGH</div>
+                <div class="text-[11px] text-slate-600 mt-2 leading-tight">Multiple distress cues: threat, sleep loss, hyper-arousal (“heart racing”).</div>
+                <button onclick="openExplain()" class="mt-2 text-[11px] font-bold text-teal-700 underline">Why this flag? →</button>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 p-3">
+              <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Voice & language signals</div>
+              <div class="mt-2 space-y-2 text-xs">
+                <div class="flex justify-between"><span class="text-slate-600">Speech rate</span><span class="font-bold">Fast • 172 wpm</span></div>
+                <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-500" style="width:74%"></div></div>
+                <div class="flex justify-between"><span class="text-slate-600">Long pauses / silence</span><span class="font-bold">2.1s avg • Frequent</span></div>
+                <div class="flex justify-between"><span class="text-slate-600">Pitch variance</span><span class="font-bold">High • Tremor detected</span></div>
+                <div class="flex justify-between"><span class="text-slate-600">Detected emotion</span><span class="font-bold text-amber-700">Fear • Vigilance • Distress</span></div>
+              </div>
+              <div class="mt-3 flex flex-wrap gap-1">
+                <span class="text-[11px] bg-red-50 border border-red-200 text-red-700 rounded-full px-2 py-1 font-semibold">threatened</span>
+                <span class="text-[11px] bg-amber-50 border border-amber-200 text-amber-700 rounded-full px-2 py-1 font-semibold">scared</span>
+                <span class="text-[11px] bg-slate-50 border border-slate-200 rounded-full px-2 py-1 font-semibold">sleep loss</span>
+                <span class="text-[11px] bg-slate-50 border border-slate-200 rounded-full px-2 py-1 font-semibold">heart racing</span>
+              </div>
+            </div>
+
+            <div class="rounded-xl bg-amber-50 border border-amber-200 p-3">
+              <div class="text-xs font-bold text-amber-900 flex items-center gap-1.5"><i data-lucide="lightbulb" class="w-4 h-4"></i> Next best action (protocol)</div>
+              <ol class="mt-2 space-y-1.5 text-xs leading-relaxed text-amber-900 list-decimal list-inside">
+                <li><span class="font-bold">Safety check:</span> Confirm safe location; offer to stay on line; do not ask to return home alone.</li>
+                <li><span class="font-bold">Grounding:</span> Offer 60-sec breathing; validate feelings.</li>
+                <li><span class="font-bold">Escalate:</span> Flag for counsellor + legal aid; schedule follow-up in 4 hours.</li>
+              </ol>
+              <button onclick="toast('Protocol checklist opened')" class="mt-2 text-[11px] font-bold bg-white border border-amber-200 rounded-full px-3 py-1">View PoA Act protocol</button>
+            </div>
+
+            <div class="rounded-xl bg-white border border-slate-200 p-3">
+              <div class="text-[10px] font-bold tracking-wide text-slate-500 uppercase">Suggested response (copy)</div>
+              <div id="suggestedReply" class="mt-1 text-xs leading-relaxed bg-slate-50 border border-slate-200 rounded-xl p-2.5">“Thank you for sharing this with me. It makes sense to feel scared after what happened. You don’t have to go back alone — I can stay on the line and connect you to someone nearby who can help right now. Would you like that?”</div>
+              <div class="mt-2 flex gap-2">
+                <button onclick="copySuggested()" class="flex-1 bg-[#1B2A4A] text-white text-xs font-bold px-3 py-1.5 rounded-full">Copy to reply</button>
+                <button onclick="toast('Tone softened — more gentle phrasing applied')" class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold">Soften tone</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <h4 class="text-sm font-bold text-[#1B2A4A] flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4"></i> Today’s insights</h4>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-2"><div class="text-lg font-extrabold">62%</div><div class="text-[11px] text-slate-500">Calls with stress &gt;60</div></div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-2"><div class="text-lg font-extrabold">18%</div><div class="text-[11px] text-slate-500">High trauma risk</div></div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-2"><div class="text-lg font-extrabold">4.2★</div><div class="text-[11px] text-slate-500">Victim feedback</div></div>
+          </div>
+          <div class="mt-3">
+            <div class="text-[11px] font-bold tracking-wide text-slate-500 uppercase">Stress distribution</div>
+            <div class="mt-2 space-y-1.5">
+              <div class="flex items-center gap-2 text-xs"><span class="w-12 font-medium">Low</span><div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-500" style="width:28%"></div></div><span class="w-8 text-right">28%</span></div>
+              <div class="flex items-center gap-2 text-xs"><span class="w-12 font-medium">Medium</span><div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-500" style="width:44%"></div></div><span class="w-8 text-right">44%</span></div>
+              <div class="flex items-center gap-2 text-xs"><span class="w-12 font-medium">High</span><div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-red-500" style="width:28%"></div></div><span class="w-8 text-right">28%</span></div>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-3">Simulation only — no real ML model. Rules & heuristics demonstrate the intended AI behaviour for SIH 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom: Compliance -->
+    <div class="mt-4 bg-white border border-slate-200 rounded-2xl px-4 py-3 flex flex-wrap items-center gap-3 text-xs">
+      <span class="inline-flex items-center gap-1.5 font-bold text-slate-700"><i data-lucide="shield" class="w-4 h-4 text-teal-700"></i> Privacy & Audit</span>
+      <span class="text-slate-600">Consent logged • PII masked in transcripts • Retention as per MoSJE policy • All AI flags are explainable and overrideable by operator</span>
+      <button onclick="toast('Audit log opened (demo)')" class="ml-auto text-xs font-bold text-teal-700 underline">View audit trail</button>
+    </div>
+  </div>
+</main>
+
+<footer class="mt-8 border-t border-slate-200 bg-white">
+  <div class="max-w-[1440px] mx-auto px-4 lg:px-6 py-4 flex flex-wrap items-center gap-3 text-[11px] text-slate-500">
+    <span>© 2026 Ministry of Social Justice and Empowerment • National Helpline Against Atrocities (14566) • SAHAY Prototype for Smart India Hackathon 2026</span>
+    <span class="hidden sm:inline w-1 h-1 bg-slate-300 rounded-full"></span>
+    <span>Theme: Smart Automation • For demo purposes only — no real victim data is stored.</span>
+    <a href="#" onclick="toast('Accessibility statement (demo)');return false" class="ml-auto font-bold text-slate-700 underline">Accessibility</a>
+    <a href="#" onclick="toast('Data policy (demo)');return false" class="font-bold text-slate-700 underline">Data handling</a>
+  </div>
+</footer>
+
+<!-- Modals -->
+<div id="modalBreathing" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm p-4 grid place-items-center">
+  <div class="bg-white rounded-[20px] max-w-md w-full p-6 shadow-xl">
+    <div class="flex items-start justify-between gap-4">
+      <h3 class="font-display font-bold text-lg text-[#1B2A4A]">60-second breathing</h3>
+      <button onclick="closeBreathing()" class="w-8 h-8 grid place-items-center rounded-full border border-slate-200"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <p class="text-xs text-slate-600 mt-1">Follow the circle. No data is collected here.</p>
+    <div class="mt-6 grid place-items-center">
+      <div id="breathCircle" class="w-32 h-32 rounded-full bg-teal-50 border-2 border-teal-200 grid place-items-center transition-all duration-[4000ms]"><span id="breathText" class="text-sm font-bold text-teal-800">Inhale</span></div>
+      <div class="text-xs font-semibold text-slate-600 mt-3" id="breathCount">0 / 4 cycles</div>
+      <button id="breathBtn" onclick="startBreathing()" class="mt-4 bg-[#0F766E] text-white text-sm font-bold px-5 py-2 rounded-full">Start</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalConsent" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm p-4 grid place-items-center">
+  <div class="bg-white rounded-[20px] max-w-lg w-full p-6 shadow-xl">
+    <h3 class="font-bold text-[#1B2A4A] flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5 text-teal-700"></i> Privacy & how SAHAY AI works (simulation)</h3>
+    <ul class="mt-3 space-y-2 text-xs leading-relaxed text-slate-700 list-disc list-inside">
+      <li><span class="font-bold">What is analysed:</span> words you type/speak, pauses, and self-reported feelings — only to estimate stress/trauma priority.</li>
+      <li><span class="font-bold">Where:</span> on-device first; only with your consent is a summary shared with the NHAA operator.</li>
+      <li><span class="font-bold">No judgement:</span> the AI does not decide your case — it only suggests next steps for the human operator.</li>
+      <li><span class="font-bold">Your control:</span> remain anonymous, skip questions, delete data, or ask for human-only support.</li>
+    </ul>
+    <div class="mt-4 flex justify-end gap-2">
+      <button onclick="closeConsent()" class="px-4 py-2 rounded-full border border-slate-200 text-sm font-semibold">Close</button>
+      <button onclick="closeConsent(); toast('Consent preferences saved')" class="px-5 py-2 rounded-full bg-[#1B2A4A] text-white text-sm font-bold">I understand</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalExplain" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm p-4 grid place-items-center">
+  <div class="bg-white rounded-[20px] max-w-lg w-full p-6 shadow-xl">
+    <h3 class="font-bold text-[#1B2A4A]">Why was this flagged HIGH?</h3>
+    <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
+      <div class="rounded-xl bg-red-50 border border-red-200 p-3"><div class="font-bold text-red-800">Keywords</div><div>threatened, scared, heart racing, didn’t sleep</div></div>
+      <div class="rounded-xl bg-amber-50 border border-amber-200 p-3"><div class="font-bold text-amber-800">Voice cues (sim)</div><div>Fast speech, tremor, long silences — often linked to fear</div></div>
+      <div class="rounded-xl bg-slate-50 border border-slate-200 p-3"><div class="font-bold">Context</div><div>Recent threat + unsafe location → safety protocol triggered</div></div>
+      <div class="rounded-xl bg-teal-50 border border-teal-200 p-3"><div class="font-bold text-teal-800">Human override</div><div>Operator can confirm, lower, or escalate — AI never decides alone.</div></div>
+    </div>
+    <div class="mt-4 flex justify-end"><button onclick="closeExplain()" class="px-5 py-2 rounded-full bg-[#1B2A4A] text-white text-sm font-bold">Got it</button></div>
+  </div>
+</div>
+
+<div id="modalEscalate" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm p-4 grid place-items-center">
+  <div class="bg-white rounded-[20px] max-w-md w-full p-6 shadow-xl">
+    <h3 class="font-bold text-red-700 flex items-center gap-2"><i data-lucide="siren" class="w-5 h-5"></i> Escalate to supervisor / protection team</h3>
+    <p class="text-xs text-slate-600 mt-2">This will notify the on-duty protection officer and counsellor lead. Continue to stay on the line with the victim.</p>
+    <div class="mt-4 grid gap-2 text-xs">
+      <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-red-600"> Notify District Protection Officer</label>
+      <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-red-600"> Assign senior counsellor</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="accent-red-600"> Request safe shelter assistance</label>
+    </div>
+    <div class="mt-4 flex justify-end gap-2">
+      <button onclick="closeEscalate()" class="px-4 py-2 rounded-full border border-slate-200 text-sm font-semibold">Cancel</button>
+      <button onclick="closeEscalate(); toast('Escalated — supervisor notified (demo)')" class="px-5 py-2 rounded-full bg-red-600 text-white text-sm font-bold">Confirm escalation</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="hidden fixed bottom-4 right-4 z-50 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 max-w-sm">
+  <i data-lucide="info" class="w-4 h-4 text-teal-300 shrink-0"></i><span id="toastMsg">Saved</span>
+</div>
+
+<script>
+lucide.createIcons();
+let mode='victim';
+let step=1;
+let feel=3;
+let safety=null;
+let fontScale=1;
+
+function switchMode(m){
+  mode=m;
+  document.getElementById('victimView').classList.toggle('hidden', m!=='victim');
+  document.getElementById('operatorView').classList.toggle('hidden', m!=='operator');
+  document.getElementById('btnVictim').className = m==='victim' ? 'px-4 py-1.5 rounded-full text-sm font-semibold bg-[#1B2A4A] text-white shadow-sm transition' : 'px-4 py-1.5 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition';
+  document.getElementById('btnOperator').className = m==='operator' ? 'px-4 py-1.5 rounded-full text-sm font-semibold bg-[#1B2A4A] text-white shadow-sm transition' : 'px-4 py-1.5 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition';
+  window.scrollTo({top:0,behavior:'smooth'});
+  lucide.createIcons();
+}
+function scrollToAssessment(){ document.getElementById('assessment').scrollIntoView({behavior:'smooth',block:'start'}); }
+function updateSteps(){
+  document.getElementById('stepNo').textContent = step;
+  document.getElementById('stepBar').style.width = (step/5*100)+'%';
+  document.querySelectorAll('.assessmentStep').forEach(el=>{
+    const s=parseInt(el.dataset.step);
+    el.classList.toggle('hidden', s!==step);
+  });
+  document.getElementById('successPane').classList.add('hidden');
+}
+function nextStep(skip=false){
+  if(step===1 && !document.getElementById('consentCheck').checked){
+    toast('Please confirm consent to continue — or choose anonymous chat');
+    return;
+  }
+  if(step<5){ step++; updateSteps(); }
+  if(skip) toast('Skipped — you can share later with the counsellor');
+  lucide.createIcons();
+}
+function prevStep(){ if(step>1){ step--; updateSteps(); } }
+function pickFeel(v){
+  feel=v;
+  document.getElementById('feelSlider').value=v;
+  document.querySelectorAll('.feelBtn').forEach(b=>{
+    const bv=parseInt(b.dataset.v);
+    b.classList.toggle('!border-teal-600', bv===v);
+    b.classList.toggle('shadow-glow', bv===v);
+  });
+  // update live analysis preview
+  const stress = 28 + v*11 + Math.floor(Math.random()*6);
+  document.getElementById('liveStress') && (document.getElementById('liveStress').textContent=stress);
+}
+function pickSafety(v){
+  safety=v;
+  document.querySelectorAll('.safetyBtn').forEach(b=>{
+    b.classList.toggle('ring-2', b.dataset.v===v);
+    b.classList.toggle('ring-offset-2', b.dataset.v===v);
+    b.classList.toggle('ring-slate-900', b.dataset.v===v);
+  });
+}
+document.getElementById('feelSlider')?.addEventListener('input', e=> pickFeel(parseInt(e.target.value)));
+const shareText=document.getElementById('shareText');
+shareText?.addEventListener('input', ()=>{
+  const words=shareText.value.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('charCount').textContent = words+' words';
+  const hasText=shareText.value.trim().length>0;
+  document.getElementById('liveAnalysis').classList.toggle('hidden', !hasText);
+  if(hasText){
+    const t=shareText.value.toLowerCase();
+    let stress=58;
+    if(t.includes('threat')||t.includes('scared')||t.includes('fear')) stress+=12;
+    if(t.includes('sleep')||t.includes('heart')||t.includes('racing')||t.includes('anxious')) stress+=10;
+    if(t.length>120) stress+=6;
+    stress=Math.min(92, stress+Math.floor(Math.random()*6));
+    document.getElementById('liveStress').textContent=stress;
+    document.getElementById('liveStressBar').style.width=stress+'%';
+    document.getElementById('liveEmotion').textContent = stress>75 ? 'Fear • Hyper-arousal' : stress>60 ? 'Fear • Vigilance' : 'Anxious • Uneasy';
+    const kws=[];
+    ['threatened','scared','unsafe','sleep','anxious','alone'].forEach(k=>{ if(t.includes(k)) kws.push(k); });
+    if(kws.length) document.getElementById('liveKeywords').innerHTML = kws.slice(0,4).map(k=>`<span class="text-[11px] bg-amber-50 border border-amber-200 text-amber-800 rounded-full px-2 py-0.5">${k}</span>`).join('');
+    // mirror to operator
+    syncOperatorStress(stress);
+  }
+});
+function simulateVoice(){
+  shareText.value="They threatened me near my home yesterday. I am very scared to go back. I could not sleep and my heart is racing.";
+  shareText.dispatchEvent(new Event('input'));
+  toast('Voice transcribed (simulated) — review and edit if needed');
+}
+function submitAssessment(){
+  const prefs=[...document.querySelectorAll('.pref:checked')].map(x=>x.value);
+  const ref='SAH-2026-0'+Math.floor(840+Math.random()*10);
+  document.getElementById('refId').textContent=ref;
+  // priority logic
+  let pri='MEDIUM — Priority follow-up', cls='bg-amber-500';
+  if(safety==='unsafe' || feel>=5){ pri='HIGH — Immediate outreach'; cls='bg-red-600'; }
+  else if(feel>=4 || safety==='unsure'){ pri='HIGH — Immediate outreach'; cls='bg-red-600'; }
+  else if(feel<=2 && safety==='safe'){ pri='LOW — Scheduled support'; cls='bg-emerald-600'; }
+  const badge=document.getElementById('priorityBadge');
+  badge.textContent=pri; badge.className='inline-flex items-center gap-1 text-white text-[11px] font-bold px-2 py-0.5 rounded-full '+cls;
+  document.querySelectorAll('.assessmentStep').forEach(el=>el.classList.add('hidden'));
+  document.getElementById('successPane').classList.remove('hidden');
+  document.getElementById('stepNo').textContent='5';
+  document.getElementById('stepBar').style.width='100%';
+  // push to operator queue
+  addQueueItem(ref, pri.includes('HIGH')?'HIGH': pri.includes('MEDIUM')?'MED':'LOW', prefs.join(', ')||'Support requested');
+  toast('Assessment submitted — operator notified via Integrated Portal sync');
+  lucide.createIcons();
+}
+function resetAssessment(){
+  step=1; feel=3; safety=null;
+  document.getElementById('shareText').value='';
+  document.getElementById('liveAnalysis').classList.add('hidden');
+  document.getElementById('successPane').classList.add('hidden');
+  document.querySelectorAll('.pref').forEach(c=>c.checked=false);
+  document.getElementById('consentCheck').checked=false;
+  updateSteps();
+}
+function setLang(l){
+  document.querySelectorAll('.langBtn').forEach(b=>{
+    b.className='langBtn px-2.5 py-1 rounded-full bg-white border border-slate-200 font-semibold';
+  });
+  event.target.className='langBtn px-2.5 py-1 rounded-full bg-[#1B2A4A] text-white font-bold';
+  const msgs={en:'Language set to English', hi:'भाषा हिन्दी में बदली गई', mr:'भाषा मराठीत बदलली', ta:'மொழி தமிழாக மாற்றப்பட்டது'};
+  toast(msgs[l]||'Language updated');
+}
+function sendVictimChat(){
+  const inp=document.getElementById('victimChatInput');
+  const txt=inp.value.trim();
+  if(!txt) return;
+  const log=document.getElementById('victimChatLog');
+  log.insertAdjacentHTML('beforeend', `<div class="flex gap-2 justify-end"><div class="bg-[#1B2A4A] text-white rounded-2xl rounded-tr-sm px-3 py-2 text-xs max-w-[80%]">${escapeHtml(txt)}</div><div class="w-7 h-7 rounded-full bg-slate-900 text-white grid place-items-center shrink-0 text-[10px] font-bold">You</div></div>`);
+  inp.value='';
+  log.scrollTop=log.scrollHeight;
+  // AI reply
+  setTimeout(()=>{
+    log.insertAdjacentHTML('beforeend', `<div class="flex gap-2"><div class="w-7 h-7 rounded-full bg-teal-50 border border-teal-200 grid place-items-center shrink-0"><i data-lucide="bot" class="w-3.5 h-3.5 text-teal-700"></i></div><div class="bg-teal-50 border border-teal-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs leading-relaxed">Thank you for sharing. That sounds really difficult. <span class="font-semibold">Would you like me to connect you to a counsellor now, or continue here for a moment?</span> You can also try a short breathing exercise.</div></div>`);
+    log.scrollTop=log.scrollHeight;
+    lucide.createIcons();
+  },700);
+  // mirror to operator transcript
+  const tr=document.getElementById('transcript');
+  const time=new Date().toLocaleTimeString([], {minute:'2-digit', second:'2-digit'});
+  tr.insertAdjacentHTML('beforeend', `<div class="flex gap-2"><div class="w-7 h-7 rounded-full bg-orange-100 border border-orange-200 grid place-items-center shrink-0"><i data-lucide="user" class="w-3.5 h-3.5 text-orange-700"></i></div><div class="bg-white border border-slate-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs max-w-[85%]"><span class="font-bold">Victim (${time}):</span> ${escapeHtml(txt)}</div></div>`);
+  tr.scrollTop=tr.scrollHeight;
+  syncOperatorStress( 62 + Math.min(24, txt.length/8) );
+}
+function sendOperatorReply(){
+  const inp=document.getElementById('operatorReply');
+  const txt=inp.value.trim();
+  if(!txt) return;
+  const tr=document.getElementById('transcript');
+  tr.insertAdjacentHTML('beforeend', `<div class="flex gap-2"><div class="w-7 h-7 rounded-full bg-teal-600 text-white grid place-items-center shrink-0"><i data-lucide="headset" class="w-3.5 h-3.5"></i></div><div class="bg-teal-50 border border-teal-200 rounded-2xl rounded-tl-sm px-3 py-2 text-xs max-w-[85%]"><span class="font-bold">Operator:</span> ${escapeHtml(txt)}</div></div>`);
+  inp.value=''; tr.scrollTop=tr.scrollHeight;
+}
+function useSuggestion(t){ document.getElementById('operatorReply').value=t; }
+function copySuggested(){
+  const t=document.getElementById('suggestedReply').textContent;
+  document.getElementById('operatorReply').value=t;
+  toast('Suggested reply copied to input');
+}
+function generateSummary(){ toast('Summary regenerated and synced to Integrated Portal (demo)'); }
+function acceptCall(){ toast('Call accepted — trauma-informed protocol loaded'); }
+function simulateIncoming(){
+  const id='SAH-2026-0'+Math.floor(848+Math.random()*10);
+  addQueueItem(id, ['HIGH','MED'][Math.floor(Math.random()*2)], 'New 14566 call — auto-transcribed');
+  // bump stress
+  syncOperatorStress(72+Math.floor(Math.random()*12));
+  toast('Simulated incoming call added to queue');
+}
+function addQueueItem(id, level, desc){
+  const col = level==='HIGH' ? 'bg-red-600 text-white' : level==='MED' ? 'bg-amber-500 text-white' : 'bg-emerald-600 text-white';
+  const html=`<div class="rounded-xl border border-slate-200 bg-white p-3 animate-pulse"><div class="flex items-center justify-between"><span class="text-xs font-bold">${id} • just now</span><span class="text-[11px] font-bold px-2 py-0.5 rounded-full ${col}">${level}</span></div><div class="text-[11px] text-slate-600">${escapeHtml(desc)}</div></div>`;
+  const list=document.getElementById('queueList');
+  list.insertAdjacentHTML('afterbegin', html);
+  setTimeout(()=>{ const el=list.firstElementChild; el.classList.remove('animate-pulse'); },1200);
+}
+function syncOperatorStress(val){
+  const v=Math.max(12, Math.min(92, Math.round(val)));
+  document.getElementById('stressVal').textContent=v;
+  const off=201 - (201*v/100);
+  document.getElementById('stressArc').style.strokeDashoffset=off;
+  const arc=document.getElementById('stressArc');
+  const label=document.getElementById('stressLabel');
+  if(v>=75){ arc.setAttribute('stroke','#DC2626'); label.textContent='Critical — High'; label.className='text-xs font-bold text-red-700'; }
+  else if(v>=55){ arc.setAttribute('stroke','#F59E0B'); label.textContent='High — Elevated'; label.className='text-xs font-bold text-amber-700'; }
+  else { arc.setAttribute('stroke','#10B981'); label.textContent='Moderate'; label.className='text-xs font-bold text-emerald-700'; }
+}
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function toast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.remove('hidden');
+  clearTimeout(t._tm);
+  t._tm=setTimeout(()=>t.classList.add('hidden'),2600);
+  lucide.createIcons();
+}
+function openBreathing(){ document.getElementById('modalBreathing').classList.remove('hidden'); }
+function closeBreathing(){ document.getElementById('modalBreathing').classList.add('hidden'); stopBreathing(); }
+function openConsent(){ document.getElementById('modalConsent').classList.remove('hidden'); }
+function closeConsent(){ document.getElementById('modalConsent').classList.add('hidden'); }
+function openExplain(){ document.getElementById('modalExplain').classList.remove('hidden'); }
+function closeExplain(){ document.getElementById('modalExplain').classList.add('hidden'); }
+function openEscalate(){ document.getElementById('modalEscalate').classList.remove('hidden'); }
+function closeEscalate(){ document.getElementById('modalEscalate').classList.add('hidden'); }
+function openEmergency(){ toast('Emergency: Calling 14566 — if in immediate danger, contact local police (100) as well'); }
+function adjustFont(d){
+  fontScale=Math.max(0.9, Math.min(1.25, fontScale + d*0.08));
+  document.documentElement.style.fontSize=(fontScale*16)+'px';
+  toast(d>0?'Text enlarged':'Text size reduced');
+}
+function toggleContrast(){
+  document.body.classList.toggle('contrast');
+  if(document.body.classList.contains('contrast')){
+    document.body.style.filter='contrast(1.08)';
+    toast('High contrast enabled');
+  } else { document.body.style.filter=''; toast('High contrast disabled'); }
+}
+function speakPage(){
+  if('speechSynthesis' in window){
+    const u=new SpeechSynthesisUtterance('You are safe here. SAHAY will listen without judgement. You can start a calm check-in or call 14566 at any time.');
+    u.lang='en-IN'; speechSynthesis.speak(u); toast('Reading aloud…');
+  } else toast('Text-to-speech not supported in this browser');
+}
+let breathInt=null, breathCount=0, breathPhase='inhale';
+function startBreathing(){
+  const btn=document.getElementById('breathBtn');
+  if(breathInt){ stopBreathing(); return; }
+  breathCount=0; breathPhase='inhale';
+  btn.textContent='Stop';
+  tickBreath();
+  breathInt=setInterval(tickBreath, 4000);
+}
+function tickBreath(){
+  const c=document.getElementById('breathCircle');
+  const t=document.getElementById('breathText');
+  if(breathPhase==='inhale'){ c.style.transform='scale(1.18)'; t.textContent='Inhale'; breathPhase='exhale'; }
+  else { c.style.transform='scale(0.92)'; t.textContent='Exhale'; breathPhase='inhale'; breathCount++; document.getElementById('breathCount').textContent=breathCount+' / 4 cycles'; if(breathCount>=8){ stopBreathing(); toast('Well done — notice how you feel now. You can return anytime.'); } }
+}
+function stopBreathing(){
+  clearInterval(breathInt); breathInt=null;
+  const c=document.getElementById('breathCircle'); c.style.transform='scale(1)';
+  document.getElementById('breathText').textContent='Inhale';
+  document.getElementById('breathBtn').textContent='Start';
+}
+// timer
+let secs=42;
+setInterval(()=>{ secs++; const m=String(Math.floor(secs/60)).padStart(2,'0'); const s=String(secs%60).padStart(2,'0'); const el=document.getElementById('callTimer'); if(el) el.textContent=`${m}:${s}`; },1000);
+// subtle stress drift
+setInterval(()=>{
+  if(mode==='operator'){
+    const cur=parseInt(document.getElementById('stressVal').textContent||'70');
+    const drift=cur + (Math.random()-0.5)*4;
+    syncOperatorStress(drift);
+  }
+}, 5200);
+
+document.getElementById('victimChatInput')?.addEventListener('keydown', e=>{ if(e.key==='Enter') sendVictimChat(); });
+document.getElementById('operatorReply')?.addEventListener('keydown', e=>{ if(e.key==='Enter') sendOperatorReply(); });
+updateSteps();
+</script>
+</body>
+</html>
