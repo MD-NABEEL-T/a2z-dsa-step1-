@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "../../../java basics/revision"
+		},
+		{
+			"path": "../../../CampustoCorporateClub/campustocorporateclub-c3-"
+		},
+		{
+			"path": "../../../projects/ausdauer-task-portal"
+		},
+		{
+			"path": "../../Step 2"
+		},
+		{
+			"path": "../../Step 3"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"java.project.sourcePaths": [
+			""
+		],
+		"liveServer.settings.multiRootWorkspaceName": "Step 2"
+	}
+}

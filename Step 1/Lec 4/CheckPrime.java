@@ -14,6 +14,7 @@ public class CheckPrime {
         }
         return prime;
     }
+
     public static boolean method2(int n){
         if(n<=1) return false;
         else{
@@ -25,6 +26,7 @@ public class CheckPrime {
         }
         return true;
     }
+
     public static void main(String[] args) {
         int n=25;
         boolean prime=true;
@@ -37,7 +39,7 @@ public class CheckPrime {
         else System.out.println(n+" is not a prime");  
 
         if(result2) System.out.println(n+" is a prime");
-        else System.out.println(n+" is not a prime");   
+        else System.out.println(n+" is not a prime");  
 
     }
 }
