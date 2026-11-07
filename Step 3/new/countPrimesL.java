@@ -1,4 +1,4 @@
-public class countPrimesL{
+tpublic class countPrimesL{
     public static void main(String []args){
         int num=10;
         int countPrimes=0;
