@@ -1,0 +1,26 @@
+
+1. Selection Sort
+
+• Core Goal: Find the minimum value and move it to the left.
+• How it Works: Scan the unsorted part of the array to find the smallest element, then swap it with the first unsorted element. Repeat this process moving one position to the right each time.
+• Example Walkthrough:
+	• Start: [13, 46, 24, 52, 20, 9] (Smallest is 9)
+	• Pass 1: [9, 46, 24, 52, 20, 13] (9 swapped with 13)
+
+2. Bubble Sort
+
+• Core Goal: Push the maximum value to the right.
+• How it Works: Repeatedly compare adjacent elements and swap them if they are in the wrong order. Larger values "bubble up" to the end of the array after each pass.
+• Example Walkthrough:
+	• Start: [13, 46, 24, 52, 20, 9]
+	• Pass 1: [13, 24, 46, 20, 9, 52] (52 bubbles all the way to the end)
+• Optimization Tip: Use an isSorted flag to stop early if no swaps happen during a pass.
+
+3. Insertion Sort
+
+• Core Goal: Take each element and insert it into its correct position in the already-sorted left side.
+• How it Works: Pick elements one by one from the unsorted portion and shift larger elements to the right to make room for it (similar to sorting playing cards in your hand).
+• Example Walkthrough:
+	• Start: [13, 46, 24, 52, 20, 9]
+	• Step 1: [13, 46, 24, 52, 20, 9] (46 stays after 13)
+	• Step 2: [13, 24, 46, 52, 20, 9] (24 inserts between 13 and 46)
