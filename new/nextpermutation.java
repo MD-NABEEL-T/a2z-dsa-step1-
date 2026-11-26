@@ -6,7 +6,7 @@
 
 // step 2:
 // find element just next greater than 1 is 3
-// so it becomes [2 3 ...]
+// so it becomes [2 3 ...]c
 
 // step 3:
 // find the smallest number sequence next so sort it

@@ -1,6 +1,6 @@
 import java.util.*;
 public class mergesort{
-    static void merge(int arr[],int low,int mid,int high){
+    static void merge2(int arr[],int low,int mid,int high){
         List<Integer> temp=new ArrayList<>();
         int left=low;
         int right=mid+1;
@@ -20,6 +20,37 @@ public class mergesort{
 
         for(int i=low;i<=high;i++){
             arr[i]=temp.get(i-low);
+        }
+    }
+    static void merge(int arr[],int low,int mid,int high){
+        int left=low;
+        int right=mid+1;
+        int k=0;
+        int temp[]=new int[high-low+1];
+        while(left<=mid && right<=high){
+            if(arr[left]<=arr[right]){
+                temp[k]=arr[left];
+                left++;
+            }
+            else{
+                temp[k]=arr[right];
+                right++;
+            }
+            k++;
+        }
+        while(left<=mid){
+            temp[k]=arr[left];
+            left++;
+            k++;
+        }
+        while(right<=high){
+            temp[k]=arr[right];
+            right++;
+            k++;
+        }
+
+        for(int i=0;i<temp.length;i++){
+            arr[low+i]=temp[i];
         }
     }
     static void mergeSorting(int arr[],int low,int high){
