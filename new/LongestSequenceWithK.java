@@ -58,6 +58,9 @@ public class LongestSequenceWithK {
         //     if(!map.containsKey(sum)){
         //         map.put(sum, i);
         //     }
+        //  
+
+         // map.putifAbsent(sum,i);
         // }
 
         // System.out.println(maxlen);
@@ -76,24 +79,43 @@ public class LongestSequenceWithK {
 
 
         // optimal solution using sliding window.
-        int nums[]={10,5,2,7,1,9};
+        // int nums[]={10,5,2,7,1,9};
         // int nums[]={1,2,3,1,1,1,1,3,3};
-        int target=15;
-        int left=0;
-        int right=0;
-        long sum=nums[0];
-        int maxLen=0;
+        // int target=15;
+        // int left=0;
+        // int right=0;
+        // long sum=0;
+        // int maxLen=0;
 
-        while(right<nums.length){
-            while(left<=right && sum >target){
+        // while(right<nums.length){
+        //     while(left<=right && sum >target){
+        //         sum-=nums[left];
+        //         left++;
+        //     }
+        //     if(sum==target){
+        //         maxLen=Math.max(maxLen, right - left+1);
+        //     }
+        //     right++;
+        //     if(right<nums.length)sum+=nums[right];
+        // }
+
+        int nums[]={1,2,3,1,1,1,1,3,3};
+        int k=6;// target, and to find max length
+        int left=0;
+        long sum=0;
+        int max_length=0;
+        for(int right=0;right<nums.length;right++){
+            sum+=nums[right];
+            while(sum>k && left<=right){
                 sum-=nums[left];
                 left++;
             }
-            if(sum==target){
-                maxLen=Math.max(maxLen, right - left+1);
+            if(sum==k){
+                int length=right-left+1;
+                max_length=Math.max(max_length,length);
             }
-            right++;
-            if(right<nums.length)sum+=nums[right];
+
         }
+        System.out.println(max_length);
     }
 }
